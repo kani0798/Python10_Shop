@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-   {% for product in products %}
+   {% for product in results %}
 <div class="card mb-3" style="max-width: 100%;">
   <div class="row g-0">
     <div class="col-md-4">
@@ -18,32 +18,9 @@
           {% else %}
           <p style="color: blue;" class="card-text">Ожидается</p>
      {% endif %}
-        <a href="{% url 'cart_add' product.id %}">Add To Cart</a>
       </div>
     </div>
   </div>
 </div>
     {% endfor %}
-
-{% if is_paginated %}
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-      {% if page_obj.has_previous %}
-    <li class="page-item">
-      <a class="page-link" href="{% url 'list' category %}?page={{ page_obj.previous_page_number }}" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-      {% endif %}
-    <li class="page-item"><a class="page-link" href="#">{{ page_obj.number }}</a></li>
-    {% if page_obj.has_next %}
-    <li class="page-item">
-      <a class="page-link" href="{% url 'list' category %}?page={{ page_obj.next_page_number }}" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-      {% endif %}
-  </ul>
-</nav>
-{% endif %}
 {% endblock %}

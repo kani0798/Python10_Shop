@@ -3,15 +3,17 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('', home_page, name='home'),
-    path('<str:slug>/', product_list, name='list'),
-    path('product/<int:product_id>/', product_detail,
+    path('', CategoryListView.as_view(), name='home'),
+    path('<str:slug>/', ProductListView.as_view(), name='list'),
+    path('product/<int:product_id>/', ProductDetailView.as_view(),
                                       name='detail'),
-    path('product/create/', create_product,
+    path('product/create/', ProductCreateView.as_view(),
                             name='create-product'),
-    path('product/update/<int:product_id>/', update_product,
+    path('product/update/<int:product_id>/', ProductUpdateView.as_view(),
                             name='update-product'),
-    path('product/delete/<int:product_id>/', delete_product,
+    path('product/delete/<int:product_id>/', ProductDeleteView.as_view(),
                             name='delete-product'),
+
+    path('search', SearchListView.as_view(), name='search'),
 ]
 

@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
+{% if request.user.is_staff and request.user.is_superuser and request.user.is_authenticated %}
 <a class="btn btn-outline-success" href="{% url 'update-product' product.id %}" role="button">Update</a>
 <a class="btn btn-outline-danger" href="{% url 'delete-product' product.id %}" role="button">Delete</a>
-
+{% endif %}
 
     <figure style="text-align: center;" class="figure">
   <img style="width: 500px; height: auto; border: 5px solid black;" src="{{ product.image.url }}" class="figure-img img-fluid rounded" alt="...">
@@ -12,6 +12,6 @@
        <h2 style="color: #fff;">{{ product.name }}</h2>
         <figcaption style="color: #fff;" class="figure-caption">{{ product.description }}</figcaption>
 </figure>
-Ω
+
 {% endblock %}
 
