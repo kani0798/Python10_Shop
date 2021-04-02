@@ -2,3 +2,7 @@ Django==3.1
 psycopg2-binary==2.8.5
 Pillow==7.1
 django-shopping-cart==0.1
+dj-database-url==0.3.0
+gunicorn==19.6.0
+python-decouple==3
+whitenoise==5.2.0
